@@ -1,4 +1,5 @@
 import "./KcApp.css";
+
 import { lazy, Suspense } from "react";
 import Fallback, { type PageProps } from "keycloakify/login";
 import type { KcContext } from "./kcContext";
@@ -19,13 +20,14 @@ const Terms = lazy(() => import("./pages/Terms"));
 const MyExtraPage1 = lazy(() => import("./pages/MyExtraPage1"));
 const MyExtraPage2 = lazy(() => import("./pages/MyExtraPage2"));
 const Info = lazy(() => import("keycloakify/login/pages/Info"));
+const EmailCodeForm = lazy(() => import("./pages/EmailCodeForm"));
 
 // This is like adding classes to theme.properties 
 // https://github.com/keycloak/keycloak/blob/11.0.3/themes/src/main/resources/theme/keycloak/login/theme.properties
 const classes: PageProps<any, any>["classes"] = {
     // NOTE: The classes are defined in ./KcApp.css
-    "kcHtmlClass": "my-root-class",
-    "kcHeaderWrapperClass": "my-color my-font"
+    // "kcHtmlClass": "tw-h-full",
+    // "kcHeaderWrapperClass": "my-color my-font"
 };
 
 export default function KcApp(props: { kcContext: KcContext; }) {
@@ -58,6 +60,7 @@ export default function KcApp(props: { kcContext: KcContext; }) {
                     case "my-extra-page-2.ftl": return <MyExtraPage2 {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
                     // We choose to use the default Template for the Info page and to download the theme resources.
                     case "info.ftl": return <Info {...{ kcContext, i18n, classes }} Template={DefaultTemplate} doUseDefaultCss={true} />;
+                    case "email-code-form.ftl": return <EmailCodeForm {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
                     default: return <Fallback {...{ kcContext, i18n, classes }} Template={Template} doUseDefaultCss={true} />;
                 }
             })()}

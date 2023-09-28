@@ -1,10 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.my-color {
-	color: red;
+body {
+	font-family: 'Avenir';
+	font-weight: 500;
+    font-style: normal;
+	font-size: 1rem;
+	color: #fff;
 }
 
-.my-font {
-	font-family: 'Work Sans';
+/* .my-color {
+	color: red;
 }
 
 .my-root-class {
@@ -13,4 +20,4 @@
 
 .my-root-class body {
 	background: url(./assets/background.svg) no-repeat center center fixed;
-}
+} */

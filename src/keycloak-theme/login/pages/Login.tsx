@@ -78,7 +78,10 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
                                         return (
                                             <>
-                                                <label htmlFor={autoCompleteHelper} className={getClassName("kcLabelClass")}>
+                                                {/* <label htmlFor={autoCompleteHelper} className={getClassName("kcLabelClass")}>
+                                                    {msg(label)}
+                                                </label> */}
+                                                <label htmlFor={autoCompleteHelper}>
                                                     {msg(label)}
                                                 </label>
                                                 <input
