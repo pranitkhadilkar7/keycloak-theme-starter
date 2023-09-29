@@ -50,11 +50,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <LoginLayout children={<div className={getClassName("kcLoginClass")}>
-        <div id="kc-header" className={getClassName("kcHeaderClass")}>
+        {/* <div id="kc-header" className={getClassName("kcHeaderClass")}>
             <div id="kc-header-wrapper" className={getClassName("kcHeaderWrapperClass")}>
                 {msg("loginTitleHtml", realm.displayNameHtml)}
             </div>
-        </div>
+        </div> */}
 
         <div className={clsx(getClassName("kcFormCardClass"), displayWide && getClassName("kcFormCardAccountClass"))}>
             <header className={getClassName("kcFormHeaderClass")}>
@@ -94,7 +94,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             </div>
                         </div>
                     ) : (
-                        <h1 id="kc-page-title">{headerNode}</h1>
+                        <h1 id="kc-page-title" className="tw-hidden">{headerNode}</h1>
                     )
                 ) : displayRequiredFields ? (
                     <div className={getClassName("kcContentWrapperClass")}>

@@ -5,6 +5,8 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { useGetClassName } from "keycloakify/login/lib/useGetClassName";
 import type { KcContext } from "../kcContext";
 import type { I18n } from "../i18n";
+import { FloatingInput } from "../components/FloatingInput";
+import { Button } from "../components/Button";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -77,32 +79,53 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         const autoCompleteHelper: typeof label = label === "usernameOrEmail" ? "username" : label;
 
                                         return (
-                                            <>
-                                                {/* <label htmlFor={autoCompleteHelper} className={getClassName("kcLabelClass")}>
-                                                    {msg(label)}
-                                                </label> */}
-                                                <label htmlFor={autoCompleteHelper}>
-                                                    {msg(label)}
-                                                </label>
-                                                <input
-                                                    tabIndex={1}
-                                                    id={autoCompleteHelper}
-                                                    className={getClassName("kcInputClass")}
-                                                    //NOTE: This is used by Google Chrome auto fill so we use it to tell
-                                                    //the browser how to pre fill the form but before submit we put it back
-                                                    //to username because it is what keycloak expects.
-                                                    name={autoCompleteHelper}
-                                                    defaultValue={login.username ?? ""}
-                                                    type="text"
-                                                    autoFocus={true}
-                                                    autoComplete="off"
-                                                />
-                                            </>
-                                        );
+                                            <FloatingInput 
+                                                id={autoCompleteHelper}
+                                                name={autoCompleteHelper}
+                                                type="text"
+                                                autoFocus={true}
+                                                autoComplete="off"
+                                                label={msg(label)}
+                                                className="tw-mb-8"
+                                                 />
+                                        )
+
+                                        // return (
+                                        //     <>
+                                        //         {/* <label htmlFor={autoCompleteHelper} className={getClassName("kcLabelClass")}>
+                                        //             {msg(label)}
+                                        //         </label> */}
+                                        //         <label htmlFor={autoCompleteHelper}>
+                                        //             {msg(label)}
+                                        //         </label>
+                                        //         <input
+                                        //             tabIndex={1}
+                                        //             id={autoCompleteHelper}
+                                        //             className={getClassName("kcInputClass")}
+                                        //             //NOTE: This is used by Google Chrome auto fill so we use it to tell
+                                        //             //the browser how to pre fill the form but before submit we put it back
+                                        //             //to username because it is what keycloak expects.
+                                        //             name={autoCompleteHelper}
+                                        //             defaultValue={login.username ?? ""}
+                                        //             type="text"
+                                        //             autoFocus={true}
+                                        //             autoComplete="off"
+                                        //         />
+                                        //     </>
+                                        // );
                                     })()}
                             </div>
                             <div className={getClassName("kcFormGroupClass")}>
-                                <label htmlFor="password" className={getClassName("kcLabelClass")}>
+                                <FloatingInput
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    autoComplete="off"
+                                    label={msg("password")}
+                                    className="tw-mb-12"
+                                />
+
+                                {/* <label htmlFor="password" className={getClassName("kcLabelClass")}>
                                     {msg("password")}
                                 </label>
                                 <input
@@ -112,7 +135,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     name="password"
                                     type="password"
                                     autoComplete="off"
-                                />
+                                /> */}
                             </div>
                             <div className={clsx(getClassName("kcFormGroupClass"), getClassName("kcFormSettingClass"))}>
                                 <div id="kc-form-options">
@@ -156,7 +179,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                           }
                                         : {})}
                                 />
-                                <input
+                                <Button />
+                                {/* <input
                                     tabIndex={4}
                                     className={clsx(
                                         getClassName("kcButtonClass"),
@@ -169,7 +193,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     type="submit"
                                     value={msgStr("doLogIn")}
                                     disabled={isLoginButtonDisabled}
-                                />
+                                /> */}
                             </div>
                         </form>
                     )}
